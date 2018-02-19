@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.gs2</groupId>
 	<artifactId>gs2-java-sdk-lock</artifactId>
-	<version>0.4.0</version>
+	<version>0.5.0</version>
 
 	<dependencies>
 		<dependency>
@@ -15,13 +15,13 @@
 		<dependency>
 			<groupId>io.gs2</groupId>
 			<artifactId>gs2-java-sdk-auth</artifactId>
-			<version>0.3.1</version>
+			<version>0.5.0</version>
 		</dependency>
 	</dependencies>
 
-	<name>Game Server Services GS2-Limit SDK for Java</name>
+	<name>Game Server Services GS2-Lock SDK for Java</name>
 	<url>https://gs2.io/</url>
-	<description>Game Server Services GS2-Limit SDK for Java</description>
+	<description>Game Server Services GS2-Lock SDK for Java</description>
 	
 	<licenses>
 		<license>
@@ -49,6 +49,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<gpg.skip>true</gpg.skip>
 	</properties>
 
 	<build>

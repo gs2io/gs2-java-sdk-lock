@@ -80,6 +80,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				CreateLockPoolRequest.Constant.MODULE,
 				CreateLockPoolRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            post.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(post, CreateLockPoolResult.class);
@@ -107,6 +110,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				DeleteLockPoolRequest.Constant.MODULE,
 				DeleteLockPoolRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		doRequest(delete, null);
@@ -142,6 +148,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				DescribeLockPoolRequest.Constant.MODULE,
 				DescribeLockPoolRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, DescribeLockPoolResult.class);
@@ -171,6 +180,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				DescribeServiceClassRequest.Constant.MODULE,
 				DescribeServiceClassRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, DescribeServiceClassResult.class);
@@ -200,6 +212,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				GetLockPoolRequest.Constant.MODULE,
 				GetLockPoolRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, GetLockPoolResult.class);
@@ -229,6 +244,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				GetLockPoolStatusRequest.Constant.MODULE,
 				GetLockPoolStatusRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, GetLockPoolStatusResult.class);
@@ -263,6 +281,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				LockRequest.Constant.MODULE,
 				LockRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
         get.setHeader("X-GS2-ACCESS-TOKEN", request.getAccessToken());
 
@@ -298,6 +319,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				LockByUserRequest.Constant.MODULE,
 				LockByUserRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, LockByUserResult.class);
@@ -325,6 +349,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				UnlockRequest.Constant.MODULE,
 				UnlockRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
         delete.setHeader("X-GS2-ACCESS-TOKEN", request.getAccessToken());
 
@@ -353,6 +380,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				UnlockByUserRequest.Constant.MODULE,
 				UnlockByUserRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		doRequest(delete, null);
@@ -382,6 +412,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				ENDPOINT,
 				UnlockForceByUserRequest.Constant.MODULE,
 				UnlockForceByUserRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		doRequest(delete, null);
@@ -412,6 +445,9 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 				UpdateLockPoolRequest.Constant.MODULE,
 				UpdateLockPoolRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            put.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(put, UpdateLockPoolResult.class);
