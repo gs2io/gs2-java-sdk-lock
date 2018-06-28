@@ -18,7 +18,9 @@ package io.gs2.lock;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import io.gs2.model.Region;
 import io.gs2.util.EncodingUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpDelete;
@@ -55,6 +57,26 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 		super(credential);
 	}
 
+	/**
+	 * コンストラクタ。
+	 *
+	 * @param credential 認証情報
+	 * @param region リージョン
+	 */
+	public Gs2LockClient(IGs2Credential credential, Region region) {
+		super(credential, region);
+	}
+
+	/**
+	 * コンストラクタ。
+	 *
+	 * @param credential 認証情報
+	 * @param region リージョン
+	 */
+	public Gs2LockClient(IGs2Credential credential, String region) {
+		super(credential, region);
+	}
+
 
 	/**
 	 * ロックプールを新規作成します<br>
@@ -69,10 +91,10 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 	public CreateLockPoolResult createLockPool(CreateLockPoolRequest request) {
 
 		ObjectNode body = JsonNodeFactory.instance.objectNode()
-				.put("name", request.getName());
-
+				.put("name", request.getName())
+				.put("serviceClass", request.getServiceClass());
         if(request.getDescription() != null) body.put("description", request.getDescription());
-        if(request.getServiceClass() != null) body.put("serviceClass", request.getServiceClass());
+
 		HttpPost post = createHttpPost(
 				Gs2Constant.ENDPOINT_HOST + "/lockPool",
 				credential,
@@ -255,6 +277,38 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 
 
 	/**
+	 * ロックプールを更新します<br>
+	 * <br>
+	 *
+	 * @param request リクエストパラメータ
+
+	 * @return 結果
+
+	 */
+
+	public UpdateLockPoolResult updateLockPool(UpdateLockPoolRequest request) {
+
+		ObjectNode body = JsonNodeFactory.instance.objectNode()
+				.put("serviceClass", request.getServiceClass());
+        if(request.getDescription() != null) body.put("description", request.getDescription());
+		HttpPut put = createHttpPut(
+				Gs2Constant.ENDPOINT_HOST + "/lockPool/" + (request.getLockPoolName() == null || request.getLockPoolName().equals("") ? "null" : request.getLockPoolName()) + "",
+				credential,
+				ENDPOINT,
+				UpdateLockPoolRequest.Constant.MODULE,
+				UpdateLockPoolRequest.Constant.FUNCTION,
+				body.toString());
+        if(request.getRequestId() != null) {
+            put.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
+
+
+		return doRequest(put, UpdateLockPoolResult.class);
+
+	}
+
+
+	/**
 	 * ロックを取得します。<br>
 	 * <br>
 	 *
@@ -418,39 +472,6 @@ public class Gs2LockClient extends AbstractGs2Client<Gs2LockClient> {
 
 
 		doRequest(delete, null);
-
-	}
-
-
-	/**
-	 * ロックプールを更新します<br>
-	 * <br>
-	 *
-	 * @param request リクエストパラメータ
-
-	 * @return 結果
-
-	 */
-
-	public UpdateLockPoolResult updateLockPool(UpdateLockPoolRequest request) {
-
-		ObjectNode body = JsonNodeFactory.instance.objectNode();
-
-        if(request.getDescription() != null) body.put("description", request.getDescription());
-        if(request.getServiceClass() != null) body.put("serviceClass", request.getServiceClass());
-		HttpPut put = createHttpPut(
-				Gs2Constant.ENDPOINT_HOST + "/lockPool/" + (request.getLockPoolName() == null || request.getLockPoolName().equals("") ? "null" : request.getLockPoolName()) + "",
-				credential,
-				ENDPOINT,
-				UpdateLockPoolRequest.Constant.MODULE,
-				UpdateLockPoolRequest.Constant.FUNCTION,
-				body.toString());
-        if(request.getRequestId() != null) {
-            put.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
-        }
-
-
-		return doRequest(put, UpdateLockPoolResult.class);
 
 	}
 

@@ -30,9 +30,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Lock implements Serializable {
 
-	/** ロックID */
-	private String lockId;
-
 	/** ロックプールGRN */
 	private String lockPoolId;
 
@@ -48,24 +45,6 @@ public class Lock implements Serializable {
 	/** 有効期限 */
 	private Integer ttl;
 
-
-	/**
-	 * ロックIDを取得
-	 *
-	 * @return ロックID
-	 */
-	public String getLockId() {
-		return lockId;
-	}
-
-	/**
-	 * ロックIDを設定
-	 *
-	 * @param lockId ロックID
-	 */
-	public void setLockId(String lockId) {
-		this.lockId = lockId;
-	}
 
 	/**
 	 * ロックプールGRNを取得
